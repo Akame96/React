@@ -24,7 +24,7 @@ export function Counter({ initialValue = 0 }){
             console.log(`Direction changed to: ${directionRef.current}`);
             previousDirectionRef.current = directionRef.current;
         }
-    }, [counter, initialValue]);
+    }, [counter , initialValue]);
 
     function handleCaunterIncrement(){
      setCounter((c) => c + 1)
