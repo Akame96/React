@@ -4,7 +4,7 @@ import { Container } from "./Container";
 import { Counter } from "./Counter";
 import { MouseClicker } from "./MouseClicker";
 import { MyForm } from "./MyForm";
-import { MyList } from "./MyList";
+import { Color} from "./Color";
 import { MyUncontrolledForms } from "./MyUncontrolledForms";
 import { Welcome } from "./Welcome";
 import { LanguageContext } from "./LanguageContext";
@@ -37,13 +37,13 @@ export function App() {
       <MyForm />
       <MyUncontrolledForms/> 
       <Clock />
-      <MyList items= {[
-        {id: 1 , name: 'Jane', age:30},
-        {id: 1 , name: 'Jimmy', age:44},
-        {id: 1 , name: 'John', age:29},
-        {id: 1 , name: 'Lucy', age:35}
+      <Color color= {[
+        { id: 1, name: 'Red' },
+        { id: 2, name: 'Blue' },
+        { id: 3, name: 'Green' },
      ]}
     /> 
+    
  </LanguageContext.Provider>
      </Container>
     
