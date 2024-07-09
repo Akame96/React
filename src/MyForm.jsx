@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function createData() {
   return {
@@ -10,6 +10,23 @@ function createData() {
 
 export function MyForm() {
   const [data, setData] = useState(createData());
+
+  const mountedRef = useRef(false)
+
+  const inputRef= useRef(null);
+
+  useEffect(()=>{
+    if(!mountedRef.current) {
+      mountedRef.current = true
+      console.log('mounting for the first time')
+    }else{
+      console.log('mounting again')
+    }
+
+
+  inputRef.current?.focus()
+  },[])
+
 
   function handleInputChange(event) {
     const name = event.target.name;
@@ -28,10 +45,18 @@ export function MyForm() {
     setData(createData());
   }
 
+  function handleLoginSubmit(event){
+ event.preventDefault()
+
+ console.log('login button pressed', data);
+  }
+
+console.log(inputRef);
+
   return (
-    <div>
+    <form onSubmit = {handleLoginSubmit}>
       <h1>My Form</h1>
-      <input
+      <input ref={inputRef}
         name="username"
         value={data.username}
         onChange={handleInputChange}
@@ -48,9 +73,9 @@ export function MyForm() {
         checked={data.session}
         onChange={handleInputChange}
       />
-      <button disabled={!data.username || !data.password}>Login</button>
-      <button onClick={handleResetForm}>Reset</button>
+      <button type= "submit" disabled={!data.username || !data.password}>Login</button>
+      <button type= "button" onClick={handleResetForm}>Reset</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    </form>
   );
 }

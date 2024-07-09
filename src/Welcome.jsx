@@ -1,12 +1,14 @@
+import { HelloWorld } from './HelloWorld'
+
 export function Welcome({ name , age }) {
+const WelcomeStyle = {
+  backgroundColor: name ? 'greenyellow' : 'darkgray',
+  color:name ? '#333' : '#fff'
+}
   return (
-    <div>
-      <h2>Welcome, {name}!</h2>
+    <div style={WelcomeStyle}>
+      <h2 className='welcome'>Welcome, {name}!</h2>
       {age >= 18 && <p>You are {age} years old.</p>}
-      {age >= 18 && <p>You are {age} years old.</p>}
-      {age && <p>You are {age} years old.</p>}
-      {age> 18 < 65 && <p>You are too young!</p>}
-      { name === 'John' && age > 18 < 65 && <p>you are {age} years old.</p>}
     </div>
   );
 }

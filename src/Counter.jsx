@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 
+import classes from './Counter.module.scss'
+
 export function Counter({ initialValue = 0 }){
+    
     const [counter, setCounter] = useState(initialValue)
 
     useEffect(()=>{
-        console.log(` the value of the caounter is ${counter}`)
+        console.log(` the value of the counter is ${counter}`)
     }, [counter])
 
     function handleCaunterIncrement(){
@@ -19,10 +22,10 @@ export function Counter({ initialValue = 0 }){
 
     return (
     <div>
-     <h2> I have counted to {counter} </h2>
-     <button onClick = {handleCaunterIncrement}>Increment</button>
-     <button onClick = {handleCaunterDecrement}>Decrement</button>
-     <button onClick = {handleCounterReset}> Reset </button>
+     <h2 className={counter % 2 === 0 ? classes.evenBg : classes.oddBg} > I have counted to {counter} </h2>
+     <button className={classes.button} onClick = {handleCaunterIncrement}>Increment</button>
+     <button className={classes.button} onClick = {handleCaunterDecrement}>Decrement</button>
+     <button className={classes.button} onClick = {handleCounterReset}> Reset </button>
     </div>
     )
 }
